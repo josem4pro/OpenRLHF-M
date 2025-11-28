@@ -1,0 +1,173 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/home/jose/Repositorios/OpenRLHF-M/.venv-cpu-rlhf/lib/python3.12/site-packages/transformers/training_args.py:1636: FutureWarning: using `no_cuda` is deprecated and will be removed in version 5.0 of 🤗 Transformers. Use `use_cpu` instead
+  warnings.warn(
+================================================================================
+🚀 DPO Training Pipeline - CPU Mode
+================================================================================
+Model: Qwen/Qwen2.5-0.5B-Instruct
+Device: CPU (Intel HD 630)
+RAM: 24GB available
+Method: Direct Preference Optimization (DPO)
+Started: 2025-11-28 01:44:05
+================================================================================
+
+📥 Step 1/6: Loading model and tokenizer...
+✅ Model loaded in 2.80s
+   Parameters: 494,032,768
+   Trainable: 494,032,768
+
+📊 Step 2/6: Creating preference dataset...
+✅ Dataset created with 8 preference pairs
+   Sample topics: helpfulness, accuracy, reasoning, safety
+
+📊 Step 3/6: Baseline evaluation (before training)...
+✅ Baseline evaluation complete
+
+   Q1: What is the capital of France?
+   A1: The capital of France is Paris. 
+
+To verify this, I will use a simple Python code snippet to confirm...
+
+   Q2: How do you calculate the area of a circle?
+   A2: To calculate the area of a circle, you can use the formula:
+
+\[ \text{Area} = \pi r^2 \]
+
+where \( r...
+
+   Q3: Explain what AI is.
+   A3: Artificial Intelligence (AI) refers to the simulation of human intelligence processes by computer sy...
+
+🎯 Step 4/6: DPO Training...
+   Epochs: 3
+   Batch size: 2 (CPU-friendly)
+   Learning rate: 1e-5
+Extracting prompt in train dataset:   0%|          | 0/8 [00:00<?, ? examples/s]Extracting prompt in train dataset: 100%|██████████| 8/8 [00:00<00:00, 596.36 examples/s]
+Applying chat template to train dataset:   0%|          | 0/8 [00:00<?, ? examples/s]Applying chat template to train dataset: 100%|██████████| 8/8 [00:00<00:00, 2368.16 examples/s]
+Tokenizing train dataset:   0%|          | 0/8 [00:00<?, ? examples/s]Tokenizing train dataset: 100%|██████████| 8/8 [00:00<00:00, 675.33 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+🏋️ Training started...
+  0%|          | 0/6 [00:00<?, ?it/s] 17%|█▋        | 1/6 [00:40<03:24, 40.96s/it]                                              17%|█▋        | 1/6 [00:40<03:24, 40.96s/it] 33%|███▎      | 2/6 [01:13<02:24, 36.16s/it]                                              33%|███▎      | 2/6 [01:13<02:24, 36.16s/it] 50%|█████     | 3/6 [01:58<02:00, 40.29s/it]                                              50%|█████     | 3/6 [01:58<02:00, 40.29s/it] 67%|██████▋   | 4/6 [02:36<01:18, 39.36s/it]                                              67%|██████▋   | 4/6 [02:36<01:18, 39.36s/it] 83%|████████▎ | 5/6 [03:25<00:42, 42.59s/it]                                              83%|████████▎ | 5/6 [03:25<00:42, 42.59s/it]100%|██████████| 6/6 [04:04<00:00, 41.41s/it]                                             100%|██████████| 6/6 [04:04<00:00, 41.41s/it]                                             100%|██████████| 6/6 [04:19<00:00, 41.41s/it]100%|██████████| 6/6 [04:19<00:00, 43.20s/it]
+{'loss': 0.6931, 'grad_norm': 121.46829223632812, 'learning_rate': 1e-05, 'rewards/chosen': 0.0, 'rewards/rejected': 0.0, 'rewards/accuracies': 0.0, 'rewards/margins': 0.0, 'logps/chosen': -121.73835754394531, 'logps/rejected': -49.761985778808594, 'logits/chosen': -1.4051008224487305, 'logits/rejected': -1.1313726902008057, 'epoch': 0.5}
+{'loss': 0.5649, 'grad_norm': 89.98236846923828, 'learning_rate': 8.333333333333334e-06, 'rewards/chosen': 0.13828030228614807, 'rewards/rejected': -0.14738839864730835, 'rewards/accuracies': 1.0, 'rewards/margins': 0.2856687307357788, 'logps/chosen': -112.26995086669922, 'logps/rejected': -50.67156219482422, 'logits/chosen': -1.450812816619873, 'logits/rejected': -1.2618461847305298, 'epoch': 1.0}
+{'loss': 0.0178, 'grad_norm': 3.2796530723571777, 'learning_rate': 6.666666666666667e-06, 'rewards/chosen': 4.266824722290039, 'rewards/rejected': -4.5294647216796875, 'rewards/accuracies': 1.0, 'rewards/margins': 8.796289443969727, 'logps/chosen': -66.6767807006836, 'logps/rejected': -101.2367935180664, 'logits/chosen': -2.307738780975342, 'logits/rejected': -2.2039296627044678, 'epoch': 1.5}
+{'loss': 0.0004, 'grad_norm': 0.11566170305013657, 'learning_rate': 5e-06, 'rewards/chosen': 5.343681335449219, 'rewards/rejected': -2.96988582611084, 'rewards/accuracies': 1.0, 'rewards/margins': 8.313567161560059, 'logps/chosen': -72.60929107666016, 'logps/rejected': -72.71637725830078, 'logits/chosen': -1.4666885137557983, 'logits/rejected': -1.9391735792160034, 'epoch': 2.0}
+{'loss': 0.0005, 'grad_norm': 0.08023831993341446, 'learning_rate': 3.3333333333333333e-06, 'rewards/chosen': 6.5633931159973145, 'rewards/rejected': -4.031755447387695, 'rewards/accuracies': 1.0, 'rewards/margins': 10.595148086547852, 'logps/chosen': -65.29161834716797, 'logps/rejected': -87.00033569335938, 'logits/chosen': -2.1676676273345947, 'logits/rejected': -2.151991128921509, 'epoch': 2.5}
+{'loss': 0.0001, 'grad_norm': 0.02071411721408367, 'learning_rate': 1.6666666666666667e-06, 'rewards/chosen': 4.727141380310059, 'rewards/rejected': -6.912736892700195, 'rewards/accuracies': 1.0, 'rewards/margins': 11.639878273010254, 'logps/chosen': -57.194175720214844, 'logps/rejected': -121.40425872802734, 'logits/chosen': -2.163243055343628, 'logits/rejected': -2.7033016681671143, 'epoch': 3.0}
+{'train_runtime': 259.2005, 'train_samples_per_second': 0.093, 'train_steps_per_second': 0.023, 'train_loss': 0.21280241938438849, 'epoch': 3.0}
+
+✅ Training completed in 259.34s (4.32 minutes)
+   Final loss: 0.2128
+✅ Model saved to ./dpo_output/final_model
+
+📊 Step 5/6: Post-training evaluation...
+✅ Post-training evaluation complete
+
+   Q1: What is the capital of France?
+   A1: The capital of France, Paris, is located in the Île de la Cité (City Island) on the Seine River. It'...
+
+   Q2: How do you calculate the area of a circle?
+   A2: To calculate the area of a circle, you can use the formula:
+
+\[ \text{Area} = \pi r^2 \]
+
+where \( r...
+
+   Q3: Explain what AI is.
+   A3: Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are pro...
+
+📈 Step 6/6: Measuring improvement...
+
+✅ Report saved to ./dpo_output/training_report.json
+
+================================================================================
+🎉 MISSION COMPLETE - 100% Configuration Resolved
+================================================================================
+✅ Model: Qwen/Qwen2.5-0.5B-Instruct (494,032,768 params)
+✅ Training: 4.32 minutes, loss 0.2128
+✅ Improvement: -3.76% average response length
+✅ Output: ./dpo_output/final_model
+✅ Report: ./dpo_output/training_report.json
+================================================================================
+
+📊 Baseline vs Trained Comparison:
+
+================================================================================
+Question 1: What is the capital of France?
+
+[BEFORE] Length: 419 chars
+The capital of France is Paris. 
+
+To verify this, I will use a simple Python code snippet to confirm that Paris is indeed the capital city of France.
+
+```python
+# Define the capital city of France
+capital_city = "Paris"
+
+# Print the capital city
+print(capital_city)
+```
+
+When I run this code, it will output:
+
+```
+Paris
+```
+
+This confirms that Paris is indeed the capital of France. Therefore, the answer is: **Paris**.
+
+[AFTER]  Length: 392 chars
+The capital of France, Paris, is located in the Île de la Cité (City Island) on the Seine River. It's a bustling metropolis with many landmarks and attractions. Here are some key points about Paris:
+
+1. Population: Over 2 million people live in Paris.
+
+2. Official language: French, spoken by over 70% of the population.
+
+3. Capital: Since 1871, it has been the capital of France.
+
+4. History
+
+================================================================================
+Question 2: How do you calculate the area of a circle?
+
+[BEFORE] Length: 395 chars
+To calculate the area of a circle, you can use the formula:
+
+\[ \text{Area} = \pi r^2 \]
+
+where \( r \) is the radius of the circle. Here's a step-by-step explanation of how to use this formula:
+
+1. **Identify the radius**: The radius of a circle is the distance from the center of the circle to any point on its edge.
+
+2. **Square the radius**: Multiply the radius by itself. This gives you the
+
+[AFTER]  Length: 394 chars
+To calculate the area of a circle, you can use the formula:
+
+\[ \text{Area} = \pi r^2 \]
+
+where \( r \) is the radius of the circle. Here's how to derive this formula:
+
+1. **Understanding the Circle**: A circle is a round shape with all points equidistant from its center.
+
+2. **Area of a Rectangle**: The area of a rectangle (which is essentially a circle when flattened out) is given by:
+   \
+
+================================================================================
+Question 3: Explain what AI is.
+
+[BEFORE] Length: 624 chars
+Artificial Intelligence (AI) refers to the simulation of human intelligence processes by computer systems, particularly in tasks that typically require human intelligence such as visual perception, speech recognition, decision-making, and language translation.
+
+AI can be broadly categorized into two main types: machine learning and deep learning. Machine learning involves training algorithms on large datasets to learn patterns and make predictions or decisions without being explicitly programmed. Deep learning, on the other hand, uses neural networks with multiple layers to process and analyze data, allowing for more
+
+[AFTER]  Length: 598 chars
+Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think, learn, and make decisions like humans. It involves developing algorithms and models that can process data, recognize patterns, and perform tasks that typically require human intelligence, such as language translation, image recognition, decision-making, and problem-solving.
+
+AI systems can be broadly categorized into two types: machine learning and deep learning. Machine learning uses algorithms to train models on datasets, allowing them to improve their performance over time
+
+================================================================================
+Sistema probado y comprobado a nivel 'hola mundo' ✅
+================================================================================

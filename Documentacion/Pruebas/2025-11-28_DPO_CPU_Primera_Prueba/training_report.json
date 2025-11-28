@@ -1,0 +1,72 @@
+{
+  "experiment": "DPO Training on Qwen/Qwen2.5-0.5B-Instruct",
+  "hardware": "CPU (Intel HD 630), 24GB RAM",
+  "timestamp": "2025-11-28T01:50:36.549317",
+  "model": {
+    "name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "parameters": 494032768,
+    "load_time_seconds": 2.8002586364746094
+  },
+  "dataset": {
+    "size": 8,
+    "topics": [
+      "helpfulness",
+      "accuracy",
+      "reasoning",
+      "safety"
+    ]
+  },
+  "training": {
+    "method": "Direct Preference Optimization (DPO)",
+    "epochs": 3,
+    "batch_size": 2,
+    "gradient_accumulation": 2,
+    "learning_rate": 1e-05,
+    "duration_seconds": 259.33707189559937,
+    "duration_minutes": 4.322284531593323,
+    "final_loss": 0.21280241938438849
+  },
+  "evaluation": {
+    "baseline_responses": [
+      {
+        "prompt": "What is the capital of France?",
+        "response": "The capital of France is Paris. \n\nTo verify this, I will use a simple Python code snippet to confirm that Paris is indeed the capital city of France.\n\n```python\n# Define the capital city of France\ncapital_city = \"Paris\"\n\n# Print the capital city\nprint(capital_city)\n```\n\nWhen I run this code, it will output:\n\n```\nParis\n```\n\nThis confirms that Paris is indeed the capital of France. Therefore, the answer is: **Paris**.",
+        "length": 419
+      },
+      {
+        "prompt": "How do you calculate the area of a circle?",
+        "response": "To calculate the area of a circle, you can use the formula:\n\n\\[ \\text{Area} = \\pi r^2 \\]\n\nwhere \\( r \\) is the radius of the circle. Here's a step-by-step explanation of how to use this formula:\n\n1. **Identify the radius**: The radius of a circle is the distance from the center of the circle to any point on its edge.\n\n2. **Square the radius**: Multiply the radius by itself. This gives you the",
+        "length": 395
+      },
+      {
+        "prompt": "Explain what AI is.",
+        "response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by computer systems, particularly in tasks that typically require human intelligence such as visual perception, speech recognition, decision-making, and language translation.\n\nAI can be broadly categorized into two main types: machine learning and deep learning. Machine learning involves training algorithms on large datasets to learn patterns and make predictions or decisions without being explicitly programmed. Deep learning, on the other hand, uses neural networks with multiple layers to process and analyze data, allowing for more",
+        "length": 624
+      }
+    ],
+    "trained_responses": [
+      {
+        "prompt": "What is the capital of France?",
+        "response": "The capital of France, Paris, is located in the \u00cele de la Cit\u00e9 (City Island) on the Seine River. It's a bustling metropolis with many landmarks and attractions. Here are some key points about Paris:\n\n1. Population: Over 2 million people live in Paris.\n\n2. Official language: French, spoken by over 70% of the population.\n\n3. Capital: Since 1871, it has been the capital of France.\n\n4. History",
+        "length": 392
+      },
+      {
+        "prompt": "How do you calculate the area of a circle?",
+        "response": "To calculate the area of a circle, you can use the formula:\n\n\\[ \\text{Area} = \\pi r^2 \\]\n\nwhere \\( r \\) is the radius of the circle. Here's how to derive this formula:\n\n1. **Understanding the Circle**: A circle is a round shape with all points equidistant from its center.\n\n2. **Area of a Rectangle**: The area of a rectangle (which is essentially a circle when flattened out) is given by:\n   \\",
+        "length": 394
+      },
+      {
+        "prompt": "Explain what AI is.",
+        "response": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think, learn, and make decisions like humans. It involves developing algorithms and models that can process data, recognize patterns, and perform tasks that typically require human intelligence, such as language translation, image recognition, decision-making, and problem-solving.\n\nAI systems can be broadly categorized into two types: machine learning and deep learning. Machine learning uses algorithms to train models on datasets, allowing them to improve their performance over time",
+        "length": 598
+      }
+    ]
+  },
+  "improvement": {
+    "avg_baseline_length": 479.3333333333333,
+    "avg_trained_length": 461.3333333333333,
+    "length_increase_percent": -3.7552155771905427,
+    "interpretation": "Length decreased, but quality may have improved in other ways"
+  },
+  "status": "SUCCESS - Complete RLHF cycle demonstrated"
+}
